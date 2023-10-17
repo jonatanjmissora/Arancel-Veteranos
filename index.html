@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="escudo.ico">
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Arancel Veteranos</title>
+  </head>
+  <body>
+    <div class="formulario">
+    <form class="form" id="form-login">
+    <div class="logo"></div>
+      <input type="text" id="login-email" placeholder="email.." required>
+      <input type="password" id="login-password" placeholder="password.." required>
+      <button class="login-submit" type="submit">LOGIN</button>
+      <p class="error"></p>
+    </form>
+</div>
+
+<nav class="nav-box">
+      <div class="link-after"></div>
+      <a href="#" class="link link-pagos activo">PAGOS</a>
+      <a href="#" class="link link-estado">ESTADO</a>
+      <a href="#" class="link link-archivo">ARCHIVO</a>
+      <span class="login-user"></span>
+      <div class='logout-btn'></div>
+
+  </nav>
+
+<div class="pagos-container">
+
+  <div class="letras-box">
+    <h2 class="letras-titulo">Seleccione jugador</h2>
+    <div class="letras-contenido">
+
+      <button class="letra-btn" data-letra="b">B</button>
+      <button class="letra-btn" data-letra="c">C</button>
+      <button class="letra-btn" data-letra="d">D</button>
+      <button class="letra-btn" data-letra="e">E</button>
+      <button class="letra-btn" data-letra="f">F</button>
+      <button class="letra-btn" data-letra="g">G</button>
+      <button class="letra-btn" data-letra="i">I</button>
+      <button class="letra-btn" data-letra="l">L</button>
+      <button class="letra-btn" data-letra="m">M</button>
+      <button class="letra-btn" data-letra="p">P</button>
+      <button class="letra-btn" data-letra="r">R</button>
+      <button class="letra-btn" data-letra="s">S</button>
+      <button class="letra-btn" data-letra="t">T</button>
+      <button class="letra-btn" data-letra="z">Z</button>
+
+    </div>
+  </div>
+
+  <div class="pagos-box"></div>
+
+  <div class="confirmar-box">
+
+    <h2 class="detalle-titulo">Detalle de pagos</h2>
+    <div class="confirmar-contenido"></div>
+    <button class="confirmar-btn">CONFIRMAR</button>
+    <div class="total-box">
+      <p class="total-fecha">Date</p>
+      <p class="total-titulo">total</p>
+      <p class="total-resultado">0</p>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="estado-container">
+
+  <table id="tabla">
+      <thead class="estado-th">
+        <th>NOMBRE</th>
+        <th>TOTAL</th>
+        <th>Marzo</th>
+        <th>Abril</th><th>Mayo</th><th>Junio</th>
+        <th>Julio</th><th>Agost</th><th>Septi</th>
+        <th>Octub</th><th>Novie</th><th>Dicie</th>
+      </thead>
+      <tbody class="tbody">
+      </tbody>
+    </table>
+   </div>
+
+<div class="archivo-container">
+  <div class="menu-mes">
+    <button class="mes-btn" data-mes-btn="03">marzo</button>
+    <button class="mes-btn" data-mes-btn="04">abril</button>
+    <button class="mes-btn" data-mes-btn="05">mayo</button>
+    <button class="mes-btn" data-mes-btn="06">junio</button>
+    <button class="mes-btn" data-mes-btn="07">julio</button>
+    <button class="mes-btn" data-mes-btn="08">agosto</button>
+    <button class="mes-btn" data-mes-btn="09">septi</button>
+    <button class="mes-btn" data-mes-btn="10">octub</button>
+    <button class="mes-btn" data-mes-btn="11">noviem</button>
+    <button class="mes-btn" data-mes-btn="12">diciem</button>
+  </div>
+  <div class="archivo-contenido"></div>
+</div>
+
+<template id="tpl-jugador">
+  <div class="jugador-box" id="" data-confirmar="false">
+    <p class="nombre"></p>
+    <select class="input" id="" data-confirmar-input="false">
+    <option>500</option>
+    <option>1000</option>
+  </select>
+    <div class='bx bx-check' id="" data-id=""></div>
+    <div class='bx bx-x' id="" data-id=""></div>
+
+  </div>
+</template>
+
+<template id="tpl-fila">
+  <tr class="jugador-fila">
+    <td class="nombre-tb"></td>
+    <td class="total-tb"></td>
+    <td class="marzo"></td>
+    <td class="abril"></td>
+    <td class="mayo"></td>
+    <td class="junio"></td>
+    <td class="julio"></td>
+    <td class="agosto"></td>
+    <td class="septiembre"></td>
+    <td class="octubre"></td>
+    <td class="noviembre"></td>
+    <td class="diciembre"></td>
+  </tr>
+</template>
+
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+ https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
+<script>
+// Your web app's Firebase configuration
+var firebaseConfig = {
+apiKey: "AIzaSyDSMeXUCBhuIFMKkTX7ME-YRsXvJmJu6HU",
+authDomain: "arancel-veteranos.firebaseapp.com",
+projectId: "arancel-veteranos",
+storageBucket: "arancel-veteranos.appspot.com",
+messagingSenderId: "823131671190",
+appId: "1:823131671190:web:41a8c373ef0ec371a9d0b7",
+serviceAccountId: '111018482687534865240@arancel-veteranos.iam.gserviceaccount.com',
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+</script>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
